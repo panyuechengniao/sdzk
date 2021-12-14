@@ -3,7 +3,6 @@ var util = require('../utils/util.js');
 var bdParse = require('../../bdParse/bdParse.js');
 Page({
 /* eslint-enable */
-// 测试
     data: {
         description:'',
         articleId: '', // 文章唯一标志

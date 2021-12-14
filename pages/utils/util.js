@@ -47,40 +47,54 @@ function removeHTML(str) {
 ** 获取当前栏目的子栏目或者兄弟栏目
 */
 function get_catlist(typeid) {
+    var istabbar = 0; //是否为tabbar
     var catlist = [];
-    var CATEGORYS = swan.getStorageSync('categorys')//调用栏目缓存
-    var reid = CATEGORYS[typeid]['reid'];
-    let j = 0;
+    var CATEGORYS = swan.getStorageSync('categorys');//调用栏目缓存
+    //自定义数组，格式为 {'catid':栏目id,'url':'页面（为空表示默认url）','listtype':'列表类型(单页面为空)','istabbar':'0'},
+    var diylist = [
+        {'catid':3,'url':'/pages/service/service','listtype':'3','istabbar':1}//列表且为tabbar页面
+    ];
     for (var i in CATEGORYS) {
-        if (CATEGORYS[i]['reid'] == typeid) {
-            catlist[j] = CATEGORYS[i];
-            j++;
+        if (CATEGORYS[i].parentid ==typeid  && CATEGORYS[i].ismenu == 1) {
+            catlist.push(CATEGORYS[i]);
         }
     }
-    if(catlist.length == 0){
+    if(catlist){
        for (var i in CATEGORYS) {
-            if (CATEGORYS[i]['reid'] == reid) {
-                catlist[j] = CATEGORYS[i];
-                j++;
-            }
+        var tmpcatinfo = catlist[i];
+        var diy = checkCatid(catlist[i]['catid'],diylist);
+        if(diy !== ''){
+            tmpcatinfo.istabbar = diy.istabbar;
+        }else{
+            tmpcatinfo.istabbar = istabbar;
+        }
+        catlist[i] = tmpcatinfo;
         }
     }
     return catlist;
 }
-
+/**
+ * 检测栏目是否存在数组之中，并返回对应的typeid
+ */
+function checkCatid(catid,array){
+    if (array.constructor == Array) {
+        if (array.length > 0) {
+            for (var i in array) {
+                if(array[i].catid == catid){
+                    return array[i];
+                }
+            }
+        }
+    }
+    return '';
+}
 function get_curtypeid(typeid, catlist) {
     var curtypeid;
     var CATEGORYS = swan.getStorageSync('categorys')//调用栏目缓存
-    var flag = 0;
-    for(var i in catlist){
-        if(catlist[i]['id'] == typeid){
-            flag = 1;
-        }
-    }
-    if(flag){
+    if(CATEGORYS[typeid]['parentid'] == 0){
+        curtypeid = catlist[0][catid]
+    }else {
         curtypeid = typeid;
-    }else{
-        curtypeid = catlist[0]['id']
     }
     return curtypeid;
 }

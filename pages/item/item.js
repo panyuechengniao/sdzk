@@ -1,7 +1,7 @@
 var util = require('../utils/util.js');
 //var request = require('../utils/request.js');
 const app = getApp();
-
+// 测试
 Page({ // eslint-disable-line
     data: {
         system:'',
@@ -21,7 +21,6 @@ Page({ // eslint-disable-line
         loadingIcon: 'content'// 页面状态图标 content/wifi
     },
     onLoad(options) {
-
        let that = this
        that.setData({
         curtypeid:options.typeid,
@@ -50,15 +49,15 @@ Page({ // eslint-disable-line
         var CATEGORYS = swan.getStorageSync('categorys')//调用栏目缓存
         var catlist = util.get_catlist(typeid);//获取子栏目或者兄弟栏目列表
         var curtypeid = util.get_curtypeid(typeid, catlist);//获取高亮栏目
+
         /*判断栏目结束 */
         that.setData({
             curtypeid: curtypeid,
             list_type: options.list_type,
             catlist: catlist,
-            curtypename: CATEGORYS[curtypeid]['typename'],
+            curtypename: CATEGORYS.catname,
             catintoview:'cat_'+typeid
         })
-
     });
     },
     previewRefresh() {
@@ -110,10 +109,6 @@ Page({ // eslint-disable-line
                                 commentsNum:list[i].click,
                                 images:[list[i].thumb]
                         }
-
-                        if(content.images[0].indexOf("uploads")==-1){
-                            delete content.images
-                        }
                         if(content.images && Math.random() > 0.5){
                             theme='large-image';
                        }
@@ -159,18 +154,19 @@ Page({ // eslint-disable-line
         swan.request({
             url: app.globalData.api+"action=list",
             data: {
-                typeid: that.data.curtypeid,
+                catid: that.data.curtypeid,
                 page: that.data.page + 1,
                 aid: app.globalData.aid
             },
-            method: 'POST',
+            method: 'GET',
             header: {
                 'content-type': 'application/x-www-form-urlencoded',
                 'x-appsecret': app.globalData.appsecret
             },
             success: function (res) {
-                var list_more = res.data.data;
-                console.log('更多数据')
+                var list_more = res.data.data.list;
+                console.log('更多数据');
+                console.log(res);
                 if (list_more.length > 0) {//如果有数据
                     let items=[];
                     for (var i in list_more) {
@@ -182,19 +178,16 @@ Page({ // eslint-disable-line
                             title:list_more[i].title,
                             infoSource:list_more[i].writer,
                             commentsNum:list_more[i].click,
-                            images:[list_more[i].litpic]
-                        };
-                        if(content.images[0].indexOf("uploads")==-1){
-                            delete content.images
-                        };
+                            images:list_more[i].thumb
+                        }
                         if(content.images && Math.random() > 0.5){
                             theme='large-image';
-                       };
+                       }
                        let item={
                             theme:theme,
                             articleId:articleId,
                             content:content
-                       };
+                       }
                        items.push(item)
                     }
                     if (list_more.length < that.data.pagesize) {//本次提取数据小于页面大小，后续已经没内容
