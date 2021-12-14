@@ -1,0 +1,44 @@
+.kefubg{
+    width: 100%;
+    box-sizing: border-box;
+    height: 54vw;
+}
+.kefu-box{
+    width: 100%;
+    background: #f5f6fa;
+}
+.kefu-dt{
+    width: 100%;
+    background: white;
+    margin: 10px 0;
+}
+.kefu-list{
+    line-height: 100rpx;
+    height: 100rpx;
+
+}
+.list-img{
+    width:2.5rem;
+   height:2.5rem;
+   float: left;
+
+}
+.list-dx{
+    float: right;
+    color: #b0b2be;
+    font-size:1.3rem;
+}
+.list-text{
+    float: left;
+    font-size: 1rem;
+}
+.list-img,.list-text,.list-dx{
+    display: inline-block;
+    vertical-align: middle;
+}
+.Pseudo::after{
+border: none;
+}
+.darkbg{
+background: #f5f6fa;
+}

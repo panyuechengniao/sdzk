@@ -1,0 +1,22 @@
+<view class="kefu-box">
+    <image src="../../images/kf-bg.jpg" mode="aspectFit" class="kefubg"></image>
+
+    <view class="kefu-dt">
+        <button open-type="contact" bindcontact="contactCB" class="kefu-list Pseudo" hover-class="darkbg">
+            <image src="../../images/kf.png"  class="list-img"></image>
+            <view class="list-text">在线咨询</view>
+            <text class="list-dx">></text>
+        </button>
+
+         <button open-type="contact"  bind:tap="makePhoneCall" class="kefu-list Pseudo" hover-class="darkbg">
+            <image src="../../images/call.png"  class="list-img"></image>
+            <view class="list-text">电话咨询</view>
+            <text class="list-dx">></text>
+        </button>
+         <button   bindtap="openLocation"   class="kefu-list Pseudo" hover-class="darkbg">
+            <image src="../../images/map.png"  class="list-img"></image>
+            <view class="list-text">地图导航</view>
+            <text class="list-dx">></text>
+        </button>
+    </view>
+</view>

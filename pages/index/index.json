@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "山东自考网",
+    "usingComponents": {
+        "smt-feed-item": "dynamicLib://smartUI/smt-feed-item",
+        "smt-feed": "dynamicLib://smartUI/smt-feed",
+        "smt-page-status": "dynamicLib://smartUI/smt-page-status",
+        "smt-spin": "dynamicLib://smartUI/smt-spin",
+        "smt-refresh": "dynamicLib://smartUI/smt-refresh"
+    }
+}

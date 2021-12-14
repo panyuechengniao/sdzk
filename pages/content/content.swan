@@ -1,0 +1,57 @@
+<import src="../../bdParse/bdParse.swan" />
+<view class="wrap">
+    <scroll-view scroll-y scroll-top="{=scrollTop=}" s-if="!showPageStatus" class="content-container {{isPhoneX ? 'content-container-ipx' : ''}}" bindscroll="onPageScroll" bindtouchmove="scrollPage" bindtouchstart="touchstart">
+        <view class="content-title">
+            <text selectable>{{title}}</text>
+        </view>
+        <view class="content-desp">
+            <view class="author-detail" bindtap="tapuser" data-user-id="{{authorId}}">
+                <image class="author-avator" mode="widthFix" src="{{avator}}"></image>
+                <view class="author-other">
+                    <view class="author-name">{{author}}</view>
+                    <view class="publish-date">{{date}}</view>
+                </view>
+            </view>
+            <button s-if="showFollowBtn" class="follow-btn" size="mini" type="{{isFollow ? 'default' : 'primary'}}" bindtap="tapfollow" loading="{{btnLoading}}">{{btnLoading ? '' : (isFollow ? '已关注' : '关注')}}</button>
+        </view>
+        <view class="read_content">
+            <view class="bdParse">
+                <template is="bdParse" data="{{ {bdParseData:article.nodes} }}" />
+            </view>
+        </view>
+         <view class="nextpage mt10" bindtap="nextpage" data-articleId="{{pre.id}}" data-typeid="{{pre.typeid}}">上一篇：{{pre.title}}</view>
+        <view class="nextpage" bindtap="nextpage"  data-articleId="{{next.id}}" data-typeid="{{next.typeid}}" >下一篇：{{next.title}}</view>
+        <view class="top-view {{showTopBtn ? 'top-view-show' : 'top-view-hide'}}" bindtap="backToTop"><icon type="top" class="topicon"></icon></view>
+
+    </scroll-view>
+
+    <!--相关内容推荐-->
+    <block s-if="isrelations ? true : false">
+        <view class='read_about'>
+            <view class='read_about_title'>------相关文章推荐------</view>
+            <view class="list_txt">
+                <block s-for="{{ {...relations} }}" s-for-index="relation_list">
+                    <view class='list_txtli' data-articleId="{{item.id}}" data-typeid="{{item.typeid}}" bindtap='nextpage'>
+                        <view class='list_txt_tit'> {{item.title}}</view>
+                        <view class='list_txt_time'>{{item.date}}</view>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </block>
+    <view class='other_box'>
+        <view class='other' style="float:left" bind:tap="switchTab" >
+            <image mode='widthFix' src='../../images/zhuye2.png'></image>
+            <view>首页</view>
+        </view>
+         <view class='other'  style="float:left" bind:tap="switchTab2" >
+            <image mode='widthFix' src='../../images/baoming2.png'></image>
+            <view>报名</view>
+        </view>
+        <view   class='other share' style=" float:right;background:#0b92af;" bindtap="openShare">
+            <image mode='widthFix' src='../../images/share.png' ></image>
+            <view>分享</view>
+        </view>
+    </view>
+    <smt-page-status  s-if="showPageStatus" class="content-loading" icon="{{loadingIcon}}" loading="{{loading}}" showBtn="{{loadingBtn}}" title="{{loadingTitle}}"  loadingTitle="正在加载..."  bind:smtreloading="reloadPage"> </smt-page-status>
+<view>

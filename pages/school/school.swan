@@ -1,0 +1,12 @@
+<view class="school_box">
+    <block s-for="{{schoolitem}}">
+         <view class="school_dtbox" data-typeid="{{item.id}}" bindtap="toitem" data-name="{{item.typename}}" >
+            <image src="{{'https://www.sd-zk.com.cn/'+item.typebigpic}}" class="schoolimg" mode="aspectFit"></image>
+            <view class="school_text">
+                <text class="school_name">{{item.typename}}</text>
+                <text class="schoolint">{{item.description+'...'}}</text>
+            </view>
+        </view>
+    </block>
+
+</view>

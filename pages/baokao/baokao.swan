@@ -1,0 +1,44 @@
+<view class="wrap">
+    <view class="biaodan">报名表单</view>
+    <form bindsubmit="formSubmit" bindreset="formReset">
+        <picker mode="selector" value="{{selector[arrIndex]}}" name="cengci" range="{{selector}}" bind:change="selectorChange">
+            <view class="picker">
+                 <text class="chooseItem">报考层次:</text>
+                 <view class="chooseDt">{{selector[arrIndex]}}</view>
+            </view>
+        </picker>
+         <picker mode="selector" value="{{education[arrIndex2]}}" name="education"  range="{{education}}"  bind:change="educationChange">
+                <view class="picker">
+                    <text class='chooseItem'>当前学历:</text>
+                     <view class="chooseDt">{{education[arrIndex2]}}</view>
+                </view>
+        </picker>
+        <view class="picker">
+            <view class="chooseItem">报考院校：</view>
+            <input name="school" class="chooseDt" placeholder="请输入报考院校" />
+        </view>
+        <view class="picker">
+            <view class="chooseItem">报考专业：</view>
+            <input name="zhuanye" class="chooseDt" placeholder="请输入报考专业" />
+        </view>
+        <view class="picker">
+            <view class="chooseItem">姓名：</view>
+            <input name="name" class="chooseDt" placeholder="请在此输入" />
+        </view>
+         <view class="picker">
+            <view class="chooseItem">联系电话：</view>
+            <input name="phone" class="chooseDt" placeholder="请输入联系号码" />
+        </view>
+        <view class="picker">
+            <view class="chooseItem">性别：</view>
+           <radio-group name="sex" >
+            <radio checked value="男">男</radio>
+            <radio  checked="false" value="女">女</radio>
+        </radio-group>
+        </view>
+        <view class="card-area">
+            <button formType="submit" type="primary" class="button">提交</button>
+            <button formType="reset" class="button">清空</button>
+        </view>
+    </form>
+</view>

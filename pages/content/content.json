@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+        "smt-spin": "dynamicLib://smartUI/smt-spin"
+    }
+}

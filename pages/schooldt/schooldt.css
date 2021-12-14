@@ -1,0 +1,24 @@
+.schoolimg{
+   max-width: 100%;
+   width:auto;
+   max-height:150px;
+   margin:0 auto;
+   display:block;
+}
+.schoolname{
+   font-size:16px;
+   font-weight:bold;
+   border-left:5px solid #3c76ff;
+   padding-left:2%;
+   line-height:18px;
+   margin:10px 0;
+   margin-left:2%;
+}
+.introduce{
+  text-indent:2em;
+   line-height:26px;
+   width:96%;
+   margin:0 auto;
+   font-size:16px;
+   color:#555;
+}

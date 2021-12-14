@@ -1,0 +1,41 @@
+
+.school_box{
+width: 100%;
+height: auto;
+background: rgb(243, 243, 243);
+padding:10px 0;
+}
+.school_dtbox{
+  width:90%;
+   background:white;
+   margin:10px auto;
+   padding:10px;
+   border-radius:8px;
+}
+.schoolimg{
+   width: 220rpx;
+   height: 220rpx;
+   display: inline-block;
+   vertical-align: top;
+   margin-right: 2%;
+}
+.school_text{
+    display: inline-block;
+    vertical-align: top;
+    width: 64%;
+    height: 220rpx;
+}
+.school_name{
+   display:block;
+   font-size:16px;
+   line-height:20px;
+   margin-top:5px;
+   margin-bottom:5px;
+   white-space:nowrap;
+   text-overflow:ellipsis;
+   overflow:hidden;
+}
+.schoolint{
+   font-size:14px;
+   color:#444;
+}

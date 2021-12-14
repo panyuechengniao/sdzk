@@ -1,0 +1,70 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/baokao/baokao",
+        "pages/kefu/kefu",
+        "pages/school/school",
+        "pages/content/content",
+        "pages/item/item"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "江西自考网",
+        "backgroundTextStyle": "light"
+    },
+    "preloadRule": {
+        "pages/index": {
+            "network": "all",
+            "packages": [
+                "subpackage"
+            ]
+        }
+    },
+    "networkTimeout": {
+        "request": 30000,
+        "connectSocket": 10000,
+        "uploadFile": 10000,
+        "downloadFile": 10000
+    },
+    "tabBar": {
+        "color": "#666",
+        "selectedColor": "#666",
+        "borderStyle": "black",
+        "backgroundColor": "#fff",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "/images/zhuye2.png",
+                "selectedIconPath": "/images/zhuye.png"
+            },
+            {
+                "pagePath": "pages/baokao/baokao",
+                "text": "报考",
+                "iconPath": "/images/baoming2.png",
+                "selectedIconPath": "/images/baoming.png"
+            },
+            {
+                "pagePath": "pages/school/school",
+                "text": "院校",
+                "iconPath": "/images/school2.png",
+                "selectedIconPath": "/images/school.png"
+            },
+            {
+                "pagePath": "pages/kefu/kefu",
+                "text": "客服",
+                "iconPath": "/images/kefu2.png",
+                "selectedIconPath": "/images/kefu.png"
+            }
+        ]
+    },
+    "requiredBackgroundModes": [
+        "audio"
+    ],
+    "dynamicLib": {
+        "smartUI": {
+            "provider": "smart-ui"
+        }
+    }
+}

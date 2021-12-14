@@ -1,0 +1,17 @@
+<view class="swiper-wrap">
+    <swiper class="swiper-wrap" indicator-dots="true" indicator-color="#999" indicator-active-color="black" autoplay="true" circular="true"> 
+        <block s-for="schoolimg">
+            <swiper-item >
+                <image src="{{item}}" mode="aspectFit" class="schoolimg" bindload="imgHei" bindtap="tap">
+            </swiper-item>
+        </block>
+    </swiper>
+</view>
+<view class="schoolname">{{schoolname}}</view>
+<view class="introduce">{{schoolintroduce}}</view>
+<view class="schoolname">专升本</view>
+<view>栏目调取</view>
+<view class="schoolname">高升专</view>
+<view>栏目调取</view>
+<view class="schoolname">高升本</view>
+<view>栏目调取</view>

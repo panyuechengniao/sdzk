@@ -1,0 +1,213 @@
+<view class="card-area">
+    <scroll-view      class="scroll-view"      scroll-x     scroll-left="{= scrollLeft =}"    upper-threshold="1"    lower-threshold="1"     bindscroll="scroll" >
+		<block s-for="top_list" s-for-index="toplist" s-for-item="item">
+			<view  class='top_list' class="{{idx==0?'top_list_lock':''}}" data-typeid="{{item.catid}}" bindtap="toitem" data-name="{{item.catname}}">
+				{{item.catname}}
+			</view>
+		</block>
+    </scroll-view>
+</view>
+<view class="swiper-wrap">
+    <swiper class="swiper-wrap" indicator-dots="true" indicator-color="#444" indicator-active-color="white" autoplay="true" circular="true">
+        <block s-for="banner">
+            <swiper-item >
+                <view class="width100" data-articleId="{{item.articleId}}" data-typeid="{{item.typeid}}" bindtap="tocontent" >
+                    <image src="{{item.thumb}}" mode="scaleToFill" class="swiper_img" bindload="imgHei" >
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+</view>
+<view class="width100 icon_box">
+    <block s-for="{{iconto}}">
+        <navigator target="self" open-type="navigate" url="{{item.url}}" class="iconto_box" >
+            <image src="{{item.src}}" class="icon_img" mode="aspectFit"></image>
+            <text class="icon_name">{{item.name}}</text>
+        </navigator>
+    </block>
+</view>
+<!-- 倒计时 -->
+<view class="shouye_djs">
+        <image src="../../images/wxts.png"></image>
+        <view>咨询考试时间右下角客服咨询</view>
+</view>
+<!-- 倒计时 -->
+
+<!-- 热门资讯 -->
+<view class="remen_box">
+	<view class="remen_tit">
+		热门资讯 <text  data-typeid="{{remenDt[0].catid}}" bindtap="toitem" data-name="热门资讯" >更多>></text>
+	</view>
+	<block s-for="remenDt" s-for-index="idx"  class="remen_dt" >
+		<view class="remen_new" data-articleId="{{item.id}}" data-typeid="{{item.catid}}" bindtap="tocontent" >
+			<view class="remen_xh">{{idx+1}}</view>
+			<view class="remen_dt">{{item.title}} </view>
+			<text>{{item.time}}</text>
+		</view>
+	</block>
+</view>
+<!-- 热门资讯 -->
+
+<!-- 校区和专业 -->
+<view class="change_boxbg">
+	<view class="change_box">
+	    <view class="change_tit">
+	    	<view class="change_tityx {{change==1?'change_tityx_lock':''}}" bindtap="tabsOne" data-id='1'>热门院校</view>
+			<view class="change_titzy  {{change==2?'change_tityx_lock':''}}" bindtap="tabsOne" data-id='2'>热门专业 </view>
+			<view class="change_titjz  {{change==3?'change_tityx_lock':''}}" bindtap="tabsOne" data-id='3'>招生简章 </view>
+	    </view>
+		<view class="change_info">
+			<view class="cha_rmyx "  s-if={{change==1}}>
+				<block s-for="{{school}}">
+					<view class="schoold_list"  data-typeid="{{item.catid}}" data-name="{{item.catname}}" bindtap="toitem">
+						<image src="{{'https://www.govzk.com/'+item.image}}" mode="aspectFit"></image>
+						<text>{{item.catname}}</text>
+					</view>
+				</block>
+				<view class="school_more" data-typeid="{{school[0].catid}}" bindtap="toschool" data-name="热门院校" >
+					查看更多
+				</view>
+			</view>
+			<view class="cha_rmyx " s-if={{change==2}}>
+				<block s-for="{{zhuanye}}" s-for-index="idx" class="remen_dt"  >
+					<view class="remen_new" data-articleId="{{item.articleId}}" data-typeid="{{item.typeid}}" bindtap="tocontent">
+						<view class="remen_xh">{{idx+1}}</view>
+						<view class="remen_dt">{{item.title}} </view>
+						<text>{{item.time}}</text>
+					</view>
+				</block>
+				<view class="school_more"  data-typeid="{{zhuanye[0].catid}}" bindtap="toitem" data-name="热门专业" >
+					查看更多
+				</view>
+			</view>
+			<view class="cha_rmyx " s-if={{change==3}}>
+				<view class="remen_new" style=""display:none></view>
+				<block s-for="{{zhaosheng}}" s-for-index="idx" class="remen_dt">
+					<view class="remen_new" data-articleId="{{item.articleId}}" data-typeid="{{item.typeid}}" bindtap="tocontent">
+						<view class="remen_xh">{{idx+1}}</view>
+						<view class="remen_dt">{{item.title}} </view>
+						<text>{{item.time}}</text>
+					</view>
+				</block>
+				<view class="school_more" data-typeid="{{zhaosheng[0].catid}}" bindtap="toitem" data-name="招生简章" >
+					查看更多
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+<!-- 校区和专业 -->
+
+<!-- 新闻列表展示 -->
+<view class="change_boxbg">
+	<view class="change_box">
+	    <view class="change_tit">
+	    	<view class="change_tityx  {{change2==1?'change_tityx_lock':''}}" bindtap="tabsOne2" data-id='1'>自考要闻</view>
+			<view class="change_titzy  {{change2==2?'change_tityx_lock':''}}" bindtap="tabsOne2" data-id='2'>考试报名 </view>
+			<view class="change_titjz  {{change2==3?'change_tityx_lock':''}}" bindtap="tabsOne2" data-id='3'>成绩查询 </view>
+	    </view>
+		<view class="change_info">
+			<view class="cha_rmyx "  s-if={{change2==1}}>
+				<view class="remen_new" style=""display:none></view>
+				<block s-for="{{zkywDate}}" class="remen_dt"  s-for-index="idx">
+					<view class="remen_new" data-articleId="{{item.articleId}}" data-typeid="{{item.typeid}}"  bindtap="tocontent" >
+						<view class="remen_xh">{{idx+1}}</view>
+						<view class="remen_dt">{{item.title}} </view>
+						<text>{{item.time}}</text>
+					</view>
+				</block>
+				<view class="school_more" data-typeid="{{zkywDate[0].catid}}" bindtap="toitem" data-name="自考要闻" >
+					查看更多
+				</view>
+			</view>
+			<view class="cha_rmyx " s-if={{change2==2}}>
+				<view class="remen_new" style=""display:none></view>
+				<block s-for="{{ksbmDate}}" class="remen_dt" s-for-index="idx"  >
+					<view class="remen_new" data-articleId="{{item.articleId}}" data-typeid="{{item.typeid}}"  bindtap="tocontent">
+						<view class="remen_xh">{{idx+1}}</view>
+						<view class="remen_dt">{{item.title}} </view>
+						<text>{{item.time}}</text>
+					</view>
+				</block>
+				<view class="school_more" data-typeid="{{ksbmDate[0].catid}}" bindtap="toitem" data-name="考试报名" >
+					查看更多
+				</view>
+			</view>
+			<view class="cha_rmyx " s-if={{change2==3}}>
+				<view class="remen_new" style=""display:none></view>
+				<block s-for="{{cjcxDate}}" class="remen_dt"  s-for-index="idx" >
+					<view class="remen_new" data-articleId="{{item.articleId}}" data-typeid="{{item.typeid}}"  bindtap="tocontent">
+						<view class="remen_xh">{{idx+1}}</view>
+						<view class="remen_dt">{{item.title}} </view>
+						<text>{{item.time}}</text>
+					</view>
+				</block>
+				<view class="school_more"  data-typeid="{{cjcxDate[0].catid}}" bindtap="toitem" data-name="成绩查询" >
+					查看更多
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+<!-- 新闻列表展示 -->
+
+<!-- 热门标签 -->
+<view class="change_boxbg">
+<view class="remen_box" style="background: white;padding:1px;">
+	<view class="remen_tit">
+		热门标签
+         <!-- <text >更多>></text> -->
+	</view>
+	<view class="rmbq_box">
+		<block s-for="{{rmbqDt}}" class="remen_dt">
+				<view class="rmbq_list" data-typeid="{{item.typeid}}" bindtap="toitem" data-name="{{item.name}}" >{{item.name}} </view>
+		</block>
+	</view>
+</view>
+</view>
+<!-- 热门标签 -->
+
+<!-- 常见问题 -->
+<view class="change_boxbg">
+<view class="remen_box" style="background: white;padding:1px;">
+	<view class="remen_tit">
+		常见问题 <text  data-typeid="{{cjwtDt[0].catid}}" bindtap="toitem">更多>></text>
+	</view>
+	<block s-for="{{cjwtDt}}" class="remen_dt" s-for-index="idx" >
+		<view class="remen_new" data-articleId="{{item.id}}" data-typeid="{{item.catid}}"  bindtap="tocontent">
+			<view class="remen_xh">{{idx+1}}</view>
+			<view class="remen_dt">{{item.title}} </view>
+			<text>{{item.time}}</text>
+		</view>
+	</block>
+</view>
+</view>
+<!-- 常见问题 -->
+
+<!-- 自考历年真题 -->
+<view class="change_boxbg">
+<view class="remen_box" style="background: white;padding:1px;">
+	<view class="remen_tit">
+		自考历年真题 <text data-typeid="{{zhenti[0].catid}}" bindtap="toitem">更多>></text>
+	</view>
+	<view class="zhenti_box">
+		<block s-for="{{zhenti}}">
+			<view class="zhuanti_list" data-articleId="{{item.id}}" data-typeid="{{item.catid}}" bindtap="tocontent">
+				<image src="https://www.govzk.com/statics/mmodel/images/bkzn.jpg" mode="aspectFit"></image>
+				<text>{{item.title}}</text>
+			</view>
+		</block>
+	</view>
+
+</view>
+</view>
+<!-- 自考历年真题 -->
+
+<smt-feed-item  s-for="item in list"  theme="{{item.theme}}" data-articleId="{{item.articleId}}" content="{{item.content}}"  video="{{item.video}}" status="{{item.status}}" bindfeeditemtap="feedItemTap"  bindtap="tocontent">
+    </smt-feed-item>
+    <smt-spin s-if="loaded" status="{{status}}" bind:tap="reload"></smt-spin>
+
+<view class="top-view {{showTopBtn ? 'top-view-show' : 'top-view-hide'}}" bindtap="backToTop"><icon type="top" class="topicon"></icon></view>
+</view>
+ <smt-page-status s-if="showPageStatus" class="content-loading" icon="{{loadingIcon}}" loading="{{loading}}" showBtn="{{loadingBtn}}" title="{{loadingTitle}}" loadingTitle="正在加载..."    bind:smtreloading="reloadPage">
+<smt-spin status='1'></smt-spin></smt-page-status>

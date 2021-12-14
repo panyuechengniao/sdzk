@@ -1,0 +1,20 @@
+.smt-feed {
+    display: block;
+    height: 100vh;
+    background: #fff;
+}
+
+.content-loading {
+    height: 100vh;
+}
+
+.loading {
+    padding: 10rpx;
+    text-align: center;
+    font-size: 25rpx;
+    color: #0b92af
+}
+
+.complete {
+    color: #999;
+}

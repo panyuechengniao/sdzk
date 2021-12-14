@@ -1,0 +1,3 @@
+<import src="/node_modules/@smt-lib/bdparse/bdParse/bdParse.swan" />
+
+<template is="bdParse" data="{{{bdParseData: article.nodes}}}" />
