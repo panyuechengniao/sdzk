@@ -1,7 +1,7 @@
 var util = require('../utils/util.js');
 //var request = require('../utils/request.js');
 const app = getApp();
-// 测试
+// 测试1
 Page({ // eslint-disable-line
     data: {
         system:'',
